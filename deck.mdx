@@ -1,11 +1,24 @@
+import { Head, Notes, Image } from 'mdx-deck'
 import {
   CodeSurfer,
   CodeSurferColumns,
   Step,
 } from "code-surfer";
 import { github, vsDark } from "@code-surfer/themes";
+import List from './components/List'
+import FullImage from './components/FullImage'
+import lighthouseAudit1 from './images/lighthouse-audits-start-useReact.png'
+import lighthouseAudit2 from './images/lighthouse-a11y-results-useReact.png'
+import lighthouseAudit3 from './images/lighthouse-a11y-results-expanded-useReact.png'
+import lighthouseAudit4 from './images/lighthouse-results-all-useReact.png'
+import reactAxeDemo from './images/react-axe-demo.gif'
+
 
 export const theme = vsDark;
+
+<Head>
+  <title>How to do without doing anything</title>
+</Head>
 
 # Hello 👋
 
@@ -13,140 +26,145 @@ You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](h
 
 ---
 
+# Yuraima Estevez
+
+<List>
+  <li>👩‍💻 Tech Lead</li>
+  <li>📰 The New York Times</li>
+  <li>🐶 Love Dogs</li>
+</List>
+
+---
+
+# "How much do you love dogs?"
+\- You, probably
+
+---
+
+- a11y plays right into another love of mine
+- building a web that is better for everyone.
+- a11y means building software that works for everyone, especially those with disabilities.
+
+---
+
+# [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+An open-source, automated tool for improving the quality of web pages.
+
+<Notes>
+
+- Allows you to run accessibility audits on your website.
+- You'll receive a score for how accessible your site is.
+- Let you know where you can improve your score and make your site more accessible.
+
+</Notes>
+
+---
+
+# [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+
+<List bullets appear={false}>
+  <li>Chrome DevTools</li>
+  <li>Command Line</li>
+  <li>CI Systems</li>
+  <li>Web UI</li>
+</List>
+
+---
+
+# [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+
+<List bullets appear={false}>
+  <li>Chrome DevTools 👈</li>
+  <li>Command Line</li>
+  <li>CI Systems</li>
+  <li>Web UI</li>
+</List>
+
+---
+
+<Image src={lighthouseAudit1} />
+
+<Notes>
+
+- Lighthouse comes baked into Chrome DevTools
+- If you open the "Audits" tab you'll see a list of audits that you can run.
+
+</Notes>
+
+___
+
+<Image src={lighthouseAudit2} />
+
+<Notes>
+
+- We can choose the accessibility audit to run and lighthouse will give us a score out of 100.
+- This lets us know how accessible our website is by checking if we're adhereing to accessibility standards and best practices.
+
+</Notes>
+
+___
+
+<Image src={lighthouseAudit3} />
+
+<Notes>
+
+- Along with our score we get a list of improvements to make that will help us make our website more accessible.
+- I like to run lighthouse in the devtools when I want to get a sense of a site's baseline accessibility score.
+- Or as I make changes to make sure I'm not unintentionally degrading my accessibility support.
+
+</Notes>
+
+___
+
+<Image src={lighthouseAudit4} />
+
+<Notes>
+
+- One perk that lighthouse gives us is that you can use it for running other audits, not just accessibility.
+- Performance, best practices, seo, progressive web apps.
+- All of this is rolled into one tool so that you can make sure you're building a top quality site without a ton of additional work on your end.
+
+</Notes>
+
+___
+
+# [react-axe](https://github.com/dequelabs/react-axe)
+Open source tool that tests the accessibility of React applications and displays the results in the Chrome DevTools console.
+
+---
+
 <CodeSurfer>
 
-```js title="This is a title" subtitle="and this a subtitle"
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
+```js file=./code/react-axe-import.js
 ```
 
-```js
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
-
-function adipiscing(...elit) {
-  if (!elit.sit) {
-    return [];
-  }
-
-  const sed = elit[0];
-  return eiusmod.tempor(sed) ? sed : [sed];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
-```
-
-```diff 1[10:14],2[15:19],3[22:27],10:12
-
+```js 4:5 file=./code/react-axe-import.js
 ```
 
 </CodeSurfer>
 
----
+<Notes>
 
-<CodeSurferColumns themes={[vsDark, github]}>
+- Here's how you would use react-axe in your projects.
+- NEXT SLIDE
+- Note that I'm only running react-axe in NON-PRODUCTION environments.
+- It'll be clear why we do that when we see how it works.
 
-<Step>
+</Notes>
 
-```js
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
-```
+___
 
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
-```
+<FullImage src={reactAxeDemo} />
 
-</Step>
+<Notes>
 
-<Step>
+- Once we have react-axe included in our project, we can load our site and open up the DevTools console.
+- And we see that react-axe is adding messages to our console highlighting accessibility errors on the page.
+- These messages include a severity rating (minor, moderate, serious) to signal how critical an error is.
+- Also includes a link to a helpful resource that gives us details on the error and how we can fix it.
+- Different from lighthouse which checks statically, this will evaluate our site as we interact with it.
+- That's why we only run in non-production environments, because the performance hit would be detrimental.
 
-```js
-const lorem = (ipsum, dolor, sit) => {
-  const amet = dolor - ipsum;
-  return consectetur.adipiscing(
-    {
-      elit: sed.eiusmod(sit - dolor) / amet + 2,
-    },
-    (tempor, incididunt) => ipsum + amet * incididunt
-  );
-};
+</Notes>
 
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
-```
-
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
-
-const sed = (eiusmod, tempor, incididunt) => {
-  const ut = tempor - eiusmod;
-  return labore.et(
-    {
-      amet: dolore.magna(incididunt - tempor) / ut + 2,
-    },
-    (aliqua, elit) => eiusmod + ut * elit
-  );
-};
-```
-
-</Step>
-
-</CodeSurferColumns>
-
----
-
-docs:  
-[codesurfer.pomb.us](https://codesurfer.pomb.us)
+___
