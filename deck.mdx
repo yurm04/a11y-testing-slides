@@ -12,6 +12,7 @@ import lighthouseAudit2 from './images/lighthouse-a11y-results-useReact.png'
 import lighthouseAudit3 from './images/lighthouse-a11y-results-expanded-useReact.png'
 import lighthouseAudit4 from './images/lighthouse-results-all-useReact.png'
 import reactAxeDemo from './images/react-axe-demo.gif'
+import failedFocusTest from './images/failed-focus-test.png'
 
 
 export const theme = vsDark;
@@ -188,7 +189,259 @@ ___
 
 </Notes>
 
+---
+
+# Testing
+
+<Notes>
+
+- Let's move on to adding automated tests to test the accessibility of our apps.
+- Quick disclaimer: I'll share the tools I use, but the frameworks and libraries here don't matter
+- Pay attention to what I test and why it's important to test them.
+
+</Notes>
+
 ___
+
+# Testing
+
+<List>
+  <li>Unit Tests</li>
+  <li>Integration Tests</li>
+  <li>End-to-end Tests</li>
+</List>
+
+<Notes>
+
+- Covering three kinds of tests.  These are the most common.
+
+</Notes>
+
+___
+
+# Unit Tests
+
+<List>
+  <li>Component API and Behavior</li>
+  <li>ARIA attributes</li>
+  <li>Focus States</li>
+</List>
+
+<Notes>
+
+- testing individual, stand-alone components.
+- Can validate a component's api and behavior.
+- That there are aria attributes present and their values.
+- Keyboard navigation.
+
+</Notes>
+
+---
+
+# [Jest](https://jestjs.io/en/)
+
+<Notes>
+
+- Testing framework that's usually paired with React
+- framework, library, environemnt agnostic
+
+</Notes>
+
+---
+
+# [react-testing-library](https://testing-library.com/docs/react-testing-library/api)
+
+<Notes>
+
+- library full of helpful testing methods for querying and matching values.
+- part of a larger testing suite called testing-library with many other libraries that are tech agnostic.
+
+</Notes>
+
+---
+
+# Unit Tests
+
+<List>
+  <li>Component API and Behavior</li>
+  <li>ARIA attributes</li>
+  <li>Focus States</li>
+</List>
+
+<Notes>
+
+- testing individual, stand-alone components.
+- Can validate a component's api and behavior.
+- That there are aria attributes present and their values.
+- Keyboard navigation.
+
+</Notes>
+
+---
+
+<CodeSurfer>
+
+```js file=./code/unit-test-0.0.0.js
+```
+
+```js 6,14 file=./code/unit-test-0.0.0.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- Let's start off with a simple, accessible button.
+- And let's test that our button will render the right ARIA attribute when it's passed as a prop.
+
+</Notes>
+
+---
+
+# [ARIA Attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
+HTML attributes that help define the semantics of an element or component for assistive technologies.
+
+*[check out my talk on building accessible components](https://youtu.be/lxxYParyAGk?t=24456)
+<Notes>
+
+- ARIA attributes provide more information to assistive technologies like a screen reader so they understand our components.
+- We want to make sure that we're including them where appropriate, making them perfect to test for.
+- Go to my talk on accessible components to learn more about ARIA and how to use. 
+
+</Notes>
+
+---
+
+<CodeSurfer>
+
+```js 13,14 file=./code/unit-test-0.0.0.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- The ARIA attribute we want to test for here is called 'aria-label'
+- it provides a label for the element it's applied to so that something like a screen reader can announce to users.
+
+
+</Notes>
+
+---
+
+<CodeSurfer>
+
+```js file=./code/unit-test-0.0.1.js
+```
+
+```js 1 file=./code/unit-test-0.0.1.js
+```
+
+```js 2:6 file=./code/unit-test-0.0.1.js
+```
+
+```js 7:8 file=./code/unit-test-0.0.1.js
+```
+
+```js 10 file=./code/unit-test-0.0.1.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- Here's how I'd write a test for this component.  Let's step through
+- testing to make sure we don't render the aria-label attribute unless we have the right prop.
+- if aria-label present and empty, a screen reader will not announce the button at all and our user won't know the button is there.
+- NEXT: construct our accessible button component and make sure not to pass the accessibleLabel prop
+- NEXT: render that button and query for the button node
+- NEXT: what we care about. asserting that our rendered button does NOT have an aria-label attribute
+- again, testing library/framework don't matter.  APIs differ, focus on testing the presence or absence of the aria attribute.
+
+</Notes>
+
+---
+
+<CodeSurfer>
+
+```js file=./code/unit-test-0.0.2.js
+```
+
+```js 5,12 file=./code/unit-test-0.0.2.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- Also test that the label attribute is there when we do pass the prop to it.
+- most is the same, but passing the accessibleLabel attribute.
+- and asserting that our button does have the aria-label attribute
+- and it's set to the label that we passed to our component.
+
+</Notes>
+
+---
+
+<CodeSurfer>
+
+```js file=./code/unit-test-0.0.3.js
+```
+
+```js 10 file=./code/unit-test-0.0.3.js
+```
+
+```js 11 file=./code/unit-test-0.0.3.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- Let's set up another test, this time for focus.
+- Testing that our components can gain focus is good for testing keyboard navigation.
+- All of our interactive elements need to support keyboard only users.
+- only elements that can be focused are interactible with a keyboard
+- NEXT: call the focus method on our button.
+- NEXT: check that our button is now focused
+
+</Notes>
+
+---
+
+<CodeSurfer>
+
+```js file=./code/unit-test-0.0.0.js
+```
+
+```js 8,17 file=./code/unit-test-0.0.0.js
+```
+
+```js 8,17 file=./code/unit-test-0.0.4.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- This test protects us in the future from introducing bugs that break keyboard navigation.
+- By default html buttons support keyboard nav and focus.
+- NEXT: but what if someone comes by and changes our button to a div?
+- divs are not focusable elements, and therefore will not support keyboard nav.
+
+</Notes>
+
+---
+
+<FullImage src={failedFocusTest} />
+
+<Notes>
+
+- now this will fail our test and let us know that we've likely introduced a bug in our code.
+
+</Notes>
+
+---
 
 # Manual Testing
 
