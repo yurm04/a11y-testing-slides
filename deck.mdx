@@ -13,6 +13,7 @@ import lighthouseAudit3 from './images/lighthouse-a11y-results-expanded-useReact
 import lighthouseAudit4 from './images/lighthouse-results-all-useReact.png'
 import reactAxeDemo from './images/react-axe-demo.gif'
 import failedFocusTest from './images/failed-focus-test.png'
+import onBlurError from './images/on-blur-error-useReact.gif'
 
 
 export const theme = vsDark;
@@ -272,25 +273,6 @@ ___
 
 ---
 
-# Unit Tests
-
-<List>
-  <li>Component API and Behavior</li>
-  <li>ARIA attributes</li>
-  <li>Focus States</li>
-</List>
-
-<Notes>
-
-- testing individual, stand-alone components.
-- Can validate a component's api and behavior.
-- That there are aria attributes present and their values.
-- Keyboard navigation.
-
-</Notes>
-
----
-
 <!-- button component code -->
 
 <CodeSurfer>
@@ -463,7 +445,124 @@ HTML attributes that help define the semantics of an element or component for as
 
 <Notes>
 
-- now this will fail our test and let us know that we've likely introduced a bug in our code.
+- now this will fail our test and let us know that we've likely introduced a bug in our code that breaks keyboard navigation for our users.
+
+</Notes>
+
+---
+
+# Integration Tests
+How individual components interact with each other
+
+<Notes>
+
+- Let concerned about component APIs
+- More about the outcomes of how components interact with each other.
+- Can also test aria attributes and make sure supporting keyboard nav when components come together.
+
+</Notes>
+
+---
+
+<!-- Slack component demo gif  -->
+
+<FullImage src={onBlurError} />
+
+<Notes>
+
+- example from useReact website
+- slack sign up via email.
+- when i focus into the email input and then blur out, validation is run.
+- if no valid email, red outline is added to input to signal that i need to add an email.
+- i also need to make sure my screen reader users are notified of this error somehow.
+- and that's what we're going to test, to make sure that my signal for assistive technologies works.
+
+</Notes>
+
+---
+
+<!-- Slack component code intro -->
+
+<CodeSurfer>
+
+```js file=./code/integration-test-0.0.0.js
+```
+
+```js 6,7,8,9,15,19 file=./code/integration-test-0.0.0.js
+```
+
+```js 28,29 file=./code/integration-test-0.0.0.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- Let's take a look at this component.
+- Composed of multiple components that this container passes props to.
+- NEXT: Accessible input accepts onBlur function 
+- NEXT: This function validates our email when a user unfocuses the input
+- NEXT: And there's an accessible alert component that accepts an error message if there's an error with validation.
+
+</Notes>
+
+---
+
+<!-- Accessible alert component walkthrough -->
+
+<CodeSurfer>
+
+```js file=./code/integration-test-0.0.1.js
+```
+
+```js 2 file=./code/integration-test-0.0.1.js
+```
+
+```js 3 file=./code/integration-test-0.0.1.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- Here's our accessible alert component
+- NEXT: it's visually hidden so it doesn't show up on the page because this component is only here for assistive technologies.
+- NEXT: role=alert. aria attribute that will announce changes to this component.  When we add an error message, a screen reader will announce that message.
+- empty to start because only changes to the node are announced.
+
+</Notes>
+
+---
+
+<!-- Accessible alert test walkthrough -->
+
+<CodeSurfer>
+
+```js file=./code/integration-test-0.0.2.js
+```
+
+```js 5 file=./code/integration-test-0.0.2.js
+```
+
+```js 6:9 file=./code/integration-test-0.0.2.js
+```
+
+```js 11:16 file=./code/integration-test-0.0.2.js
+```
+
+```js 18:23 file=./code/integration-test-0.0.2.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- Let's look at a simple test I could write to make sure that this actually happens with all of my different components in the SlackSignupContainer.
+- NEXT: test that my alert is updated when the input is blurred.
+- NEXT: render my signup container component and get references to input and alert components.
+- NEXT: focus into my input and assert that my alert contains no text in it.
+- NEXT: blur out without a valid email, assert that my alert component does receive our error message.
+
 
 </Notes>
 
