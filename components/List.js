@@ -1,7 +1,7 @@
 import React from 'react'
 import { Appear } from 'mdx-deck'
 
-export default ({ children, appear = true, bullets = false }) => {
+export default ({ children, appear = true, bullets = false, centered = false }) => {
 
   function renderChildren() {
     return appear 

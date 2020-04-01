@@ -1,0 +1,29 @@
+.layout {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+/* .layout p,
+.layout h1,
+.layout h2,
+.layout h3 {
+  
+} */
+
+footer {
+  border-top: solid 2px;
+  border-color: --theme-ui-colors-secondary;
+  position: fixed;
+  bottom: .5em;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: .5em 1em 0;
+}
+
+footer a {
+  font-size: 1.5rem;
+}

@@ -4,7 +4,11 @@ import {
   CodeSurferColumns,
   Step,
 } from "code-surfer";
-import { github, vsDark } from "@code-surfer/themes";
+import './styles.css'
+import customTheme from './theme'
+export const theme = customTheme;
+
+import Layout from './components/Layout'
 import List from './components/List'
 import FullImage from './components/FullImage'
 import lighthouseAudit1 from './images/lighthouse-audits-start-useReact.png'
@@ -18,13 +22,16 @@ import cypressA11yFail from './images/cypress-a11y-fail.png'
 import altTextUseReact from './images/alt-text-useReact.png'
 
 
-export const theme = vsDark;
-
 <Head>
-  <title>How to do without doing anything</title>
+  <title>How to do Good, Without Doing Anything</title>
 </Head>
 
+<Layout>
+
 # Hello 👋
+
+</Layout>
+
 
 <Notes>
 
@@ -35,6 +42,8 @@ export const theme = vsDark;
 
 ---
 
+<Layout>
+
 # Yuraima Estevez
 
 <List>
@@ -43,9 +52,11 @@ export const theme = vsDark;
   <li>❤️ Make the web better for everyone</li>
 </List>
 
+</Layout>
+
+
 <Notes>
 
-- besides dogs i also love to make the web better for everyone
 - what does that mean for me? building community and culture as a meetup organizer and tech leader at work.
 - going to conferences and teaching folks how they can make the web better for everyone
 - and of course that comes in the form of advocating for accessibility on the web.  Why?
@@ -56,11 +67,18 @@ export const theme = vsDark;
 
 ---
 
+<Layout>
+
+# Yuraima Estevez
+
 <List appear={false}>
   <li>👩‍💻 Tech Lead</li>
   <li>📰 The New York Times</li>
   <li>❤️ Make the web better for everyone</li>
 </List>
+
+</Layout>
+
 
 <Notes>
 
@@ -73,11 +91,18 @@ export const theme = vsDark;
 
 ---
 
+<Layout>
+
+# Yuraima Estevez
+
 <List appear={false}>
   <li>👩‍💻 Tech Lead</li>
   <li>📰 The New York Times</li>
   <li>❤️ Make the web better for everyone</li>
 </List>
+
+</Layout>
+
 
 <Notes>
 
@@ -96,6 +121,7 @@ export const theme = vsDark;
 <Notes>
 
 -  how we can do good, without doing anything...
+- or, rather...
 
 </Notes>
 
@@ -107,20 +133,42 @@ export const theme = vsDark;
 
 # HOW TO DO GOOD by doing some work upfront and then, eventually,
 
+<Notes>
+
+- and then eventually
+
+</Notes>
+
 ---
 
 # HOW TO DO GOOD by doing some work upfront and then, eventually, WITHOUT DOING ANYTHING.
+
+<Notes>
+
+- without doing anything
+
+</Notes>
 
 ---
 
 # HOW TO DO GOOD by doing some work upfront and then, eventually, WITHOUT DOING ANYTHING. sometimes...
 
+<Notes>
+
+- sometimes
+
+</Notes>
+
 ---
+
+<Layout>
 
 <List>
   <li><h1>Tools</h1></li>
   <li><h1>Testing</h1></li>
 </List>
+
+</Layout>
 
 <Notes>
 
@@ -133,10 +181,15 @@ export const theme = vsDark;
 
 ---
 
+<Layout>
+
 <List appear={false}>
   <li><h1>Tools</h1></li>
   <li><h1>Testing</h1></li>
 </List>
+
+</Layout>
+
 
 <Notes>
 
@@ -147,7 +200,12 @@ export const theme = vsDark;
 
 ---
 
+<Layout>
+
 # Tools
+
+</Layout>
+
 
 <Notes>
 
@@ -157,8 +215,12 @@ export const theme = vsDark;
 
 ---
 
-# [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)
+<Layout>
+
+## [`eslint-plugin-jsx-a11y`](https://github.com/evcohen/eslint-plugin-jsx-a11y)
 Set of accessibility linter rules that checks JSX elements during development
+
+</Layout>
 
 <Notes>
 
@@ -171,8 +233,13 @@ Set of accessibility linter rules that checks JSX elements during development
 
 ---
 
+<Layout>
+
 # [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 An open-source, automated tool for improving the quality of web pages.
+
+</Layout>
+
 
 <Notes>
 
@@ -184,7 +251,12 @@ An open-source, automated tool for improving the quality of web pages.
 
 ---
 
+<Layout>
+
 # [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+
+</Layout>
+
 
 <List bullets appear={false}>
   <li>Chrome DevTools</li>
@@ -257,8 +329,13 @@ ___
 
 ___
 
-# [react-axe](https://github.com/dequelabs/react-axe)
+<Layout>
+
+# [`react-axe`](https://github.com/dequelabs/react-axe)
 Open source tool that tests the accessibility of React applications and displays the results in the Chrome DevTools console.
+
+</Layout>
+
 
 ---
 
@@ -304,7 +381,12 @@ ___
 
 ---
 
+<Layout>
+
 # Testing
+
+</Layout>
+
 
 <Notes>
 
@@ -316,6 +398,8 @@ ___
 
 ___
 
+<Layout>
+
 # Testing
 
 <List appear={false}>
@@ -324,6 +408,9 @@ ___
   <li>End-to-end Tests</li>
 </List>
 
+</Layout>
+
+
 <Notes>
 
 - Covering three kinds of tests.  These are the most common.
@@ -331,6 +418,8 @@ ___
 </Notes>
 
 ___
+<Layout>
+
 
 # Unit Tests
 
@@ -339,6 +428,9 @@ ___
   <li>ARIA attributes</li>
   <li>Focus States</li>
 </List>
+
+</Layout>
+
 
 <Notes>
 
@@ -351,21 +443,22 @@ ___
 
 ---
 
-# [Jest](https://jestjs.io/en/)
+<Layout>
+
+<List appear={false}>
+
+  <li><h2><a href="https://jestjs.io/en/">Jest</a></h2></li>
+  <li><h2><a href="https://testing-library.com/docs/react-testing-library/api">react-testing-library</a></h2></li>
+
+</List>
+
+</Layout>
+
 
 <Notes>
 
 - Testing framework that's usually paired with React
 - framework, library, environemnt agnostic
-
-</Notes>
-
----
-
-# [react-testing-library](https://testing-library.com/docs/react-testing-library/api)
-
-<Notes>
-
 - library full of helpful testing methods for querying and matching values.
 - part of a larger testing suite with many other libraries for different technologies.
 
@@ -394,10 +487,15 @@ ___
 
 ---
 
+<Layout>
+
 # [ARIA Attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 HTML attributes that help define the semantics of an element or component for assistive technologies.
 
-*[check out my talk on building accessible components](https://youtu.be/lxxYParyAGk?t=24456)
+<small><a href="https://youtu.be/lxxYParyAGk?t=24456">📣 Watch my talk on building accessible components</a></small>
+
+</Layout>
+
 <Notes>
 
 - ARIA attributes provide more information to assistive technologies like a screen reader so they understand our components.
@@ -550,8 +648,13 @@ HTML attributes that help define the semantics of an element or component for as
 
 ---
 
+<Layout>
+
 # Integration Tests
 How individual components interact with each other
+
+</Layout>
+
 
 <Notes>
 
@@ -669,8 +772,13 @@ How individual components interact with each other
 
 ---
 
+<Layout>
+
 # End-to-end Tests
 Evaluate your entire app and full user flows
+
+</Layout>
+
 
 <Notes>
 
@@ -683,11 +791,17 @@ Evaluate your entire app and full user flows
 
 ---
 
+<Layout>
+
 # [cypress.io](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell)
-Open source e2e testing framework
+
+</Layout>
+
+
 
 <Notes>
 
+-Open source e2e testing framework
 - Great for browser driven testing.
 - has excellent accessibility support.
 
@@ -770,7 +884,12 @@ Open source e2e testing framework
 
 ---
 
+<Layout>
+
 # Manual Testing
+
+</Layout>
+
 
 <Notes>
 
@@ -784,7 +903,11 @@ Open source e2e testing framework
 
 ---
 
+<Layout>
+
 # Manual Testing
+
+</Layout>
 
 <Notes>
 
@@ -796,7 +919,11 @@ Open source e2e testing framework
 
 ---
 
+<Layout>
+
 # Manual Testing
+
+</Layout>
 
 <Notes>
 
@@ -808,10 +935,14 @@ Open source e2e testing framework
 
 ---
 
+<Layout>
+
 <List>
   <li><h1>Tools</h1></li>
   <li><h1>Testing</h1></li>
 </List>
+
+</Layout>
 
 <Notes>
 
@@ -824,10 +955,15 @@ Open source e2e testing framework
 
 ---
 
+<Layout>
+
 <List appear={false}>
   <li><h1>Tools</h1></li>
   <li><h1>Testing</h1></li>
 </List>
+
+</Layout>
+
 
 <Notes>
 
@@ -840,10 +976,15 @@ Open source e2e testing framework
 
 ---
 
+<Layout>
+
 <List appear={false}>
   <li><h1>Tools</h1></li>
   <li><h1>Testing</h1></li>
 </List>
+
+</Layout>
+
 
 <Notes>
 
