@@ -516,7 +516,6 @@ ___
 - NEXT: construct our accessible button component and make sure not to pass the accessibleLabel prop
 - NEXT: render that button and query for the button node
 - NEXT: what we care about. asserting that our rendered button does NOT have an aria-label attribute
-- again, testing library/framework don't matter.  APIs differ, focus on testing the presence or absence of the aria attribute.
 
 </Notes>
 
@@ -537,7 +536,7 @@ ___
 <Notes>
 
 - Also test that the label attribute is there when we do pass the prop to it.
-- most is the same, but passing the accessibleLabel attribute.
+- NEXT: most is the same, but passing the accessibleLabel attribute.
 - and asserting that our button does have the aria-label attribute
 - and it's set to the label that we passed to our component.
 
@@ -606,6 +605,10 @@ ___
 <Notes>
 
 - now this will fail our test and let us know that we've likely introduced a bug in our code that breaks keyboard navigation for our users.
+- These are the things we wanna make sure we're testing for.
+- Find those test cases in our components that distills down exactly what the outcomes looks like through an accessible lense.
+- If i have component that is interactive, that let's me know that i have to check focus to ensure keyboard nav support.
+- When my components rely on aria attributes, validate that those attributes are present, and set with the correct values based on different props.
 
 </Notes>
 
@@ -667,7 +670,6 @@ How individual components interact with each other
 - Let's take a look at this component.
 - Composed of multiple components that this container passes props to.
 - NEXT: Accessible input accepts onBlur function 
-- NEXT: This function validates our email when a user unfocuses the input
 - NEXT: And there's an accessible alert component that accepts an error message if there's an error with validation.
 
 </Notes>
@@ -723,12 +725,12 @@ How individual components interact with each other
 
 <Notes>
 
-- Let's look at a simple test I could write to make sure that this actually happens with all of my different components in the SlackSignupContainer.
+- Let's look at a simple test SlackSignupContainer.
 - NEXT: test that my alert is updated when the input is blurred.
 - NEXT: render my signup container component and get references to input and alert components.
 - NEXT: focus into my input and assert that my alert contains no text in it.
 - NEXT: blur out without a valid email, assert that my alert component does receive our error message.
-
+- Lots of moving parts, but guiding principles the same: check that components still manage ARIA correctly, keyboard nav.
 
 </Notes>
 
@@ -747,8 +749,8 @@ Evaluate your entire app and full user flows
 
 - tests that are the closest to how a user would experience your website.
 - you can evaluate the same things as with user and integration tests,
-- but do it within the context of your entire app.
-- great for checking navigation and specific user interactions.
+- but do it within the context of fully fleshed out user flows, pages, or entire apps.
+
 
 </Notes>
 
@@ -764,7 +766,7 @@ Evaluate your entire app and full user flows
 
 <Notes>
 
--Open source e2e testing framework
+- Open source e2e testing framework
 - Great for browser driven testing.
 - has excellent accessibility support.
 
@@ -776,26 +778,16 @@ Evaluate your entire app and full user flows
 
 <CodeSurfer>
 
-```js file=./code/e2e-test-0.0.0.js
+```js file=./code/e2e-test-0.0.0.js title="cypress-axe plugin"
 ```
 
 </CodeSurfer>
 
 <Notes>
 
-- really like the cypress-axe plugin.
-- checks for accessibility errors, similar to lighthouse and react-axe but built into your testing suite.
-
-</Notes>
-
----
-
-<FullImage src={cypressA11yFail} />
-
-<Notes>
-
-- will fail if there are any accessibility errors.
-- if you don't want to run something like react-axe or lighthouse, this is a great low effort alternative
+- really like the cypress-axe plugin. powered by axe-core
+- similar to lighthouse and react-axe, checks for accessibility errors, but built into your testing suite.
+- keeps all of your validatio in one place, allows for easy integration in your ci/cd pipeline
 
 </Notes>
 
@@ -840,59 +832,29 @@ Evaluate your entire app and full user flows
 - NEXT: cypress query for our organizer images
 - NEXT: then get the alt attribute values for all of our images.
 - NEXT: and assert that this should have a length of 5, equal to the number of organizers we have.
-- Super simple test, actually gets checked by cypress-axe, but what's important here is that we're writing e2e tests that mimic user behavior.
-- if i were a screen reader user...
+- For the sake of time this is an overly simplified test. But what's important here is getting to the root of how a user would flow through our websie, and translating that into tests..
 
 </Notes>
 
 ---
 
-<Layout>
+<!-- Accessible alert test walkthrough -->
 
-# Manual Testing
+<CodeSurfer>
 
-</Layout>
+```js file=./code/e2e-test-0.0.2.js
+```
 
+```js 4:6 file=./code/e2e-test-0.0.2.js
+```
 
-<Notes>
-
-- Before we wrap up on testing i want to highlight the importance of manual testing.
-- the presence of automated tests doesn't absolve you from manually testing your applications.
-- Tests provide you with the peace of mind that fewer bugs will unintentionally be introduced into your codebase
-- but tests won't protect you from weird edge cases or uncover that the user flow you designed doesn't actually work for the user once its in their hands.
-
-
-</Notes>
-
----
-
-<Layout>
-
-# Manual Testing
-
-</Layout>
+</CodeSurfer>
 
 <Notes>
 
-- And that means we still have to manually test some things.
-- But the time that we save because we invested in automating certain aspects of of our development process automatically gets redistributed to parts of our applications that require a finer touch or a sharper eye.
-- And this is especially important when we're building out accessibility features in our applications.
-
-</Notes>
-
----
-
-<Layout>
-
-# Manual Testing
-
-</Layout>
-
-<Notes>
-
-- It isn't always easy to go off of the accessibility documentation and know whether or not you've implented something correctly.
-- And sometimes, even when we think we have a perfectly accessible solution, we find out that it's not quite right when it's used in the real world by a person with disabilities.
-- And this is where our freed up time gets reinvested.  When testing and automation pick up the bulk of the repetitive work and QA process, we can spend more time working to solve these more nuanced challenges and building out amazing, accessible features.
+- Ask yourselves...
+- NEXT: what should happen when I successfully submit my slack sign up form? what are the aria attr. and where does focus go?
+- NEXT: Or what if a user navigates to a different page?  What do we expect the outcome is when we click a link in SPA, and what are the implications for accessibility support?
 
 </Notes>
 
@@ -953,9 +915,7 @@ Evaluate your entire app and full user flows
 
 - make incremental changes where you can, and consistently chisel away at the accessiblity errors.
 - eventually, implementing those small changes add up to possessing a deeper understanding of what it'll take to make your site accessible, and how to make it resilient against bugs.
-- And if you're starting a brand new project, figure out what an accessible version of it looks like from the start.
-- because we know what it will take to make our websites work for everyone, we're one step closer to building a better web for everyone.
-
+- Once we have that understanding, and have our automation and testing processes in place, it'll be easier to make our websites work for everyone, and that means it'll be easier to build a better web for everyone.
 
 </Notes>
 
