@@ -14,6 +14,8 @@ import lighthouseAudit4 from './images/lighthouse-results-all-useReact.png'
 import reactAxeDemo from './images/react-axe-demo.gif'
 import failedFocusTest from './images/failed-focus-test.png'
 import onBlurError from './images/on-blur-error-useReact.gif'
+import cypressA11yFail from './images/cypress-a11y-fail.png'
+import altTextUseReact from './images/alt-text-useReact.png'
 
 
 export const theme = vsDark;
@@ -24,7 +26,12 @@ export const theme = vsDark;
 
 # Hello 👋
 
-You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us)
+<Notes>
+
+- hope everyones cozying up at home, washing their hands and social distancing.
+- I myself will be dialing into this conference from my couch in cozy sweat pants with an offensively large cup of tea.
+
+</Notes>
 
 ---
 
@@ -33,40 +40,134 @@ You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](h
 <List>
   <li>👩‍💻 Tech Lead</li>
   <li>📰 The New York Times</li>
-  <li>🐶 Love Dogs</li>
+  <li>❤️ Make the web better for everyone</li>
 </List>
-
----
-
-# "How much do you love dogs?"
-\- You, probably
-
----
 
 <Notes>
 
-- besides dogs i also love to make the web better for  everyone
+- besides dogs i also love to make the web better for everyone
 - what does that mean for me? building community and culture as a meetup organizer and tech leader at work.
 - going to conferences and teaching folks how they can make the web better for everyone
 - and of course that comes in the form of advocating for accessibility on the web.  Why?
 - because at its core, web accessibility is about making apps, sites and tools that work for everyone including people with disabilities.
 - and when we build things that can work for everyone on the web, we in turn mak the web better for everyone.
-- a11y can be hard, but that doesn't mean we're allowed to just ignore it.
-- in fact, we should be looking for opportuninties where we can set ourselves up to be more efficient and resilient in our accessibility practices so that over time we can free ourselves up to dedicating the time and resources we save on solving complex problems.
-- And that's where testing and automation come into play.
-- As engineers we've already embraced the practice of protecting ourselves from bugs by writing tests and cutting time in our development process through continuous integrations and development.
-- We can take those same practices and apply them to developing accessible sites and apps.
-- And when we invest in testing and automating parts of our accessibility development, we build confidence in our systems that they will work for everyone, and consequently, make the web better for everyone.
-- So today, we're going to talk about how we can do good, without doing anything...
-- title thing about it  being somewhat click baity.
-
 
 </Notes>
 
 ---
 
-# Development
-What you can do when you're writing you're code.
+<List appear={false}>
+  <li>👩‍💻 Tech Lead</li>
+  <li>📰 The New York Times</li>
+  <li>❤️ Make the web better for everyone</li>
+</List>
+
+<Notes>
+
+- a11y can be hard, but that doesn't mean we're allowed to just ignore it.
+- in fact, we should be looking for opportuninties where we can set ourselves up to be more efficient and resilient in our accessibility practices so that over time we can free ourselves up to dedicating the time and resources we save on solving complex problems.
+- And that's where testing and automation come into play.
+
+</Notes>
+
+
+---
+
+<List appear={false}>
+  <li>👩‍💻 Tech Lead</li>
+  <li>📰 The New York Times</li>
+  <li>❤️ Make the web better for everyone</li>
+</List>
+
+<Notes>
+
+- As engineers we've already embraced the practice of protecting ourselves from bugs by writing tests and cutting time in our development process through continuous integrations and development.
+- We can take those same practices and apply them to developing accessible sites and apps.
+- And when we invest in testing and automating parts of our accessibility development, we build confidence in our systems that they will work for everyone, and consequently, make the web better for everyone.
+- So today, we're going to talk about...
+
+</Notes>
+
+
+---
+
+# HOW TO DO GOOD, WITHOUT DOING ANYTHING
+
+<Notes>
+
+-  how we can do good, without doing anything...
+
+</Notes>
+
+---
+
+# HOW TO DO GOOD by doing some work upfront
+
+---
+
+# HOW TO DO GOOD by doing some work upfront and then, eventually,
+
+---
+
+# HOW TO DO GOOD by doing some work upfront and then, eventually, WITHOUT DOING ANYTHING.
+
+---
+
+# HOW TO DO GOOD by doing some work upfront and then, eventually, WITHOUT DOING ANYTHING. sometimes...
+
+---
+
+<List>
+  <li><h1>Tools</h1></li>
+  <li><h1>Testing</h1></li>
+</List>
+
+<Notes>
+
+- break this up into two parts.
+- TOOLS. automated tools used at different stages of my development process.
+- helps automate the harder tasks that we often do and help keep my codebases free of accessibility bugs
+- TESTING. what kinds of test we write and what we want to validate when it comes to accessibility support in our components and apps.
+
+</Notes>
+
+---
+
+<List appear={false}>
+  <li><h1>Tools</h1></li>
+  <li><h1>Testing</h1></li>
+</List>
+
+<Notes>
+
+- disclaimer: i primarily work in javascript specifically react on the FE. Lots of my examples will be in react.  But almost everything in this talk is agnostic of language, framework, library. 
+- the impolementation details will be specific to your code bases, but you can use the types of tools and strategies in this talk to help guide those decisions on how to make a path forward for yourself.
+
+</Notes>
+
+---
+
+# Tools
+
+<Notes>
+
+- kick it off with tools.
+
+</Notes>
+
+---
+
+# [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)
+Set of accessibility linter rules that checks JSX elements during development
+
+<Notes>
+
+- low lift, most people already have linters
+- Helps you catch common accessibility mistakes in your code while your developing
+- Automate it using git hooks to prevent inaccessible code from getting committed
+- Can use it in your CI/CD pipeline to fail builds that don’t pass and prevent accessibility issues from making it into production
+
+</Notes>
 
 ---
 
@@ -77,7 +178,7 @@ An open-source, automated tool for improving the quality of web pages.
 
 - Allows you to run accessibility audits on your website.
 - You'll receive a score for how accessible your site is.
-- Let you know where you can improve your score and make your site more accessible.
+- Based on how closely we adhere to accessibility standards and best practices.
 
 </Notes>
 
@@ -92,16 +193,12 @@ An open-source, automated tool for improving the quality of web pages.
   <li>Web UI</li>
 </List>
 
----
+<Notes>
 
-# [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+- comes in different flavors
+- all of these do the same thing, just depends on how we want to use it based on preference.
 
-<List bullets appear={false}>
-  <li>Chrome DevTools 👈</li>
-  <li>Command Line</li>
-  <li>CI Systems</li>
-  <li>Web UI</li>
-</List>
+</Notes>
 
 ---
 
@@ -111,8 +208,9 @@ An open-source, automated tool for improving the quality of web pages.
 
 <Notes>
 
-- Lighthouse comes baked into Chrome DevTools
-- If you open the "Audits" tab you'll see a list of audits that you can run.
+- for now let's look at lighthouse in chrome devtools.
+- If you open the "Audits" tab you'll see a list of audits that you can run and some different options we can set.
+- using the useReactNYC website for demonstrations.
 
 </Notes>
 
@@ -137,7 +235,7 @@ ___
 
 <Notes>
 
-- Along with our score we get a list of improvements to make that will help us make our website more accessible.
+- Along with our score we get a list of where we lost points, and how we can fix these errors.
 - I like to run lighthouse in the devtools when I want to get a sense of a site's baseline accessibility score.
 - Or as I make changes to make sure I'm not unintentionally degrading my accessibility support.
 
@@ -171,7 +269,7 @@ Open source tool that tests the accessibility of React applications and displays
 ```js file=./code/react-axe-import.js
 ```
 
-```js 4:5 file=./code/react-axe-import.js
+```js 4:8 file=./code/react-axe-import.js
 ```
 
 </CodeSurfer>
@@ -193,11 +291,13 @@ ___
 
 <Notes>
 
-- Once we have react-axe included in our project, we can load our site and open up the DevTools console.
-- And we see that react-axe is adding messages to our console highlighting accessibility errors on the page.
-- These messages include a severity rating (minor, moderate, serious) to signal how critical an error is.
-- Also includes a link to a helpful resource that gives us details on the error and how we can fix it.
-- Different from lighthouse which checks statically, this will evaluate our site as we interact with it.
+- using the times wellness challenge as a demonstration 
+- open up the DevTools console.
+- adding messages to our console highlighting accessibility errors on the page.
+- Includes a severity rating (minor, moderate, serious).
+- a link to a helpful resource for details on the error and how we can fix it.
+- Lighthouse is different, only statically checks our site.
+- react axe is working as we use it, evaluates the rerenders with every interaction.
 - That's why we only run in non-production environments, because the performance hit would be detrimental.
 
 </Notes>
@@ -208,7 +308,7 @@ ___
 
 <Notes>
 
-- Let's move on to adding automated tests to test the accessibility of our apps.
+- Let's move on to adding automated tests to check the continued accessibility of our apps.
 - Quick disclaimer: I'll share the tools I use, but the frameworks and libraries here don't matter
 - Pay attention to what I test and why it's important to test them.
 
@@ -218,7 +318,7 @@ ___
 
 # Testing
 
-<List>
+<List appear={false}>
   <li>Unit Tests</li>
   <li>Integration Tests</li>
   <li>End-to-end Tests</li>
@@ -234,7 +334,7 @@ ___
 
 # Unit Tests
 
-<List>
+<List appear={false}>
   <li>Component API and Behavior</li>
   <li>ARIA attributes</li>
   <li>Focus States</li>
@@ -267,7 +367,7 @@ ___
 <Notes>
 
 - library full of helpful testing methods for querying and matching values.
-- part of a larger testing suite called testing-library with many other libraries that are tech agnostic.
+- part of a larger testing suite with many other libraries for different technologies.
 
 </Notes>
 
@@ -350,9 +450,8 @@ HTML attributes that help define the semantics of an element or component for as
 
 <Notes>
 
-- Here's how I'd write a test for this component.  Let's step through
-- testing to make sure we don't render the aria-label attribute unless we have the right prop.
-- if aria-label present and empty, a screen reader will not announce the button at all and our user won't know the button is there.
+- Let's step through
+- NEXT: testing that we only render the aria-label when we have the right prop.
 - NEXT: construct our accessible button component and make sure not to pass the accessibleLabel prop
 - NEXT: render that button and query for the button node
 - NEXT: what we care about. asserting that our rendered button does NOT have an aria-label attribute
@@ -456,9 +555,10 @@ How individual components interact with each other
 
 <Notes>
 
-- Let concerned about component APIs
-- More about the outcomes of how components interact with each other.
-- Can also test aria attributes and make sure supporting keyboard nav when components come together.
+- What we just covered in unit tests can also be applied to integration test.
+- Less concerned about component APIs
+- More about the outcomes of how components come together.
+- Can also test aria attributes and keyboard navigation, but this time in the context of multiple components working together.
 
 </Notes>
 
@@ -566,20 +666,195 @@ How individual components interact with each other
 
 </Notes>
 
+
+---
+
+# End-to-end Tests
+Evaluate your entire app and full user flows
+
+<Notes>
+
+- tests that are the closest to how a user would experience your website.
+- you can evaluate the same things as with user and integration tests,
+- but do it within the context of your entire app.
+- great for checking navigation and specific user interactions.
+
+</Notes>
+
+---
+
+# [cypress.io](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell)
+Open source e2e testing framework
+
+<Notes>
+
+- Great for browser driven testing.
+- has excellent accessibility support.
+
+</Notes>
+
+---
+
+<!-- Accessible alert test walkthrough -->
+
+<CodeSurfer>
+
+```js file=./code/e2e-test-0.0.0.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- really like the cypress-axe plugin.
+- checks for accessibility errors, similar to lighthouse and react-axe but built into your testing suite.
+
+</Notes>
+
+---
+
+<FullImage src={cypressA11yFail} />
+
+<Notes>
+
+- will fail if there are any accessibility errors.
+- if you don't want to run something like react-axe or lighthouse, this is a great low effort alternative
+
+</Notes>
+
+---
+
+<FullImage src={altTextUseReact} />
+
+<Notes>
+
+- Let's see how we can write our own e2e with a short and easy one.
+- on the useReact website we have a section with all of the organizer photos.
+- for screen reader support, all of these images need to have an alt attribute set.
+
+</Notes>
+
+---
+
+<!-- Accessible alert test walkthrough -->
+
+<CodeSurfer>
+
+```js file=./code/e2e-test-0.0.1.js
+```
+
+```js 4 file=./code/e2e-test-0.0.1.js
+```
+
+```js 5 file=./code/e2e-test-0.0.1.js
+```
+
+```js 10:13 file=./code/e2e-test-0.0.1.js
+```
+
+```js 15:16 file=./code/e2e-test-0.0.1.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- NEXT: let's check that when my page renders in the browser, organizers all have alt text
+- NEXT: cypress query for our organizer images
+- NEXT: then get the alt attribute values for all of our images.
+- NEXT: and assert that this should have a length of 5, equal to the number of organizers we have.
+- Super simple test, actually gets checked by cypress-axe, but what's important here is that we're writing e2e tests that mimic user behavior.
+- if i were a screen reader user...
+
+</Notes>
+
 ---
 
 # Manual Testing
 
 <Notes>
 
+- Before we wrap up on testing i want to highlight the importance of manual testing.
 - the presence of automated tests doesn't absolve you from manually testing your applications.
 - Tests provide you with the peace of mind that fewer bugs will unintentionally be introduced into your codebase
 - but tests won't protect you from weird edge cases or uncover that the user flow you designed doesn't actually work for the user once its in their hands.
+
+
+</Notes>
+
+---
+
+# Manual Testing
+
+<Notes>
+
 - And that means we still have to manually test some things.
 - But the time that we save because we invested in automating certain aspects of of our development process automatically gets redistributed to parts of our applications that require a finer touch or a sharper eye.
 - And this is especially important when we're building out accessibility features in our applications.
+
+</Notes>
+
+---
+
+# Manual Testing
+
+<Notes>
+
 - It isn't always easy to go off of the accessibility documentation and know whether or not you've implented something correctly.
 - And sometimes, even when we think we have a perfectly accessible solution, we find out that it's not quite right when it's used in the real world by a person with disabilities.
 - And this is where our freed up time gets reinvested.  When testing and automation pick up the bulk of the repetitive work and QA process, we can spend more time working to solve these more nuanced challenges and building out amazing, accessible features.
 
 </Notes>
+
+---
+
+<List>
+  <li><h1>Tools</h1></li>
+  <li><h1>Testing</h1></li>
+</List>
+
+<Notes>
+
+- And that brings me to the end of the basics so lets recap
+- NEXT: tools, help prevent accessibility bugs from being introduced in writing code, commiting to code base, shipping to production.
+- Generating audits and uncovering where we can improve our accessibility support.
+- NEXT: In testing we covered unit, integration, e2e.  When to use each, what to test for each category.  And touched on the importance of manually testing and validating our accessibility support.
+
+</Notes>
+
+---
+
+<List appear={false}>
+  <li><h1>Tools</h1></li>
+  <li><h1>Testing</h1></li>
+</List>
+
+<Notes>
+
+- It was quite a bit to cover in the amount of time that we have, and there's still plenty to uncover that will help you create an accessibility development workflow that will benefit your projects and teams.
+- But if there's one piece of advice i want to leave you with its this:
+- It can feel really overwhelming if this is the first time you've thought about the accessibility of your products, and are taking stock of the work that needs to happen to bring it up to standards.
+- But it's not expected that you to have a fully accessible site or 100% test coverage on day one.
+
+</Notes>
+
+---
+
+<List appear={false}>
+  <li><h1>Tools</h1></li>
+  <li><h1>Testing</h1></li>
+</List>
+
+<Notes>
+
+- make incremental changes where you can, and consistently chisel away at the accessiblity errors.
+- eventually, implementing those small changes add up to possessing a deeper understanding of what it'll take to make your site accessible, and how to make it resilient against bugs.
+- And if you're starting a brand new project, figure out what an accessible version of it looks like from the start.
+- because we know what it will take to make our websites work for everyone, we're one step closer to building a better web for everyone.
+
+
+</Notes>
+
+---
+
+# Thank You! 
