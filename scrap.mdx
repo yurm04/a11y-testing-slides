@@ -1,0 +1,63 @@
+
+<!-- react-axe import code  -->
+
+<CodeSurfer>
+
+```js file=./code/react-axe-import.js
+```
+
+```js 4:8 file=./code/react-axe-import.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- Here's how you would use react-axe in your projects.
+- NEXT SLIDE
+- Note that I'm only running react-axe in NON-PRODUCTION environments.
+- It'll be clear why we do that when we see how it works.
+
+</Notes>
+
+---
+
+
+<Layout>
+
+# [ARIA Attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
+HTML attributes that help define the semantics of an element or component for assistive technologies.
+
+<small><a href="https://youtu.be/lxxYParyAGk?t=24456">📣 Watch my talk on building accessible components</a></small>
+
+</Layout>
+
+<Notes>
+
+- ARIA attributes provide more information to assistive technologies like a screen reader so they understand our components.
+- We want to make sure that we're including them where appropriate, making them perfect to test for.
+- Go to my talk on accessible components to learn more about ARIA and how to use. 
+
+</Notes>
+
+---
+
+
+<!-- button component highlighting aria-label -->
+
+<CodeSurfer>
+
+```js 13,14 file=./code/unit-test-0.0.0.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- The ARIA attribute we want to test for here is called 'aria-label'
+- it provides a label for the element it's applied to so that something like a screen reader can announce to users.
+
+
+</Notes>
+
+---

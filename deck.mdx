@@ -84,7 +84,7 @@ import altTextUseReact from './images/alt-text-useReact.png'
 
 - a11y can be hard, but that doesn't mean we're allowed to just ignore it.
 - in fact, we should be looking for opportuninties where we can set ourselves up to be more efficient and resilient in our accessibility practices so that over time we can free ourselves up to dedicating the time and resources we save on solving complex problems.
-- And that's where testing and automation come into play.
+
 
 </Notes>
 
@@ -93,12 +93,9 @@ import altTextUseReact from './images/alt-text-useReact.png'
 
 <Layout>
 
-# Yuraima Estevez
-
 <List appear={false}>
-  <li>👩‍💻 Tech Lead</li>
-  <li>📰 The New York Times</li>
-  <li>❤️ Make the web better for everyone</li>
+  <li><h1>Testing</h1></li>
+  <li><h1>Automation</h1></li>
 </List>
 
 </Layout>
@@ -106,13 +103,30 @@ import altTextUseReact from './images/alt-text-useReact.png'
 
 <Notes>
 
+- And that's where testing and automation come into play.
 - As engineers we've already embraced the practice of protecting ourselves from bugs by writing tests and cutting time in our development process through continuous integrations and development.
+
+</Notes>
+
+---
+
+<Layout>
+
+<List appear={false}>
+  <li><h1>Testing</h1></li>
+  <li><h1>Automation</h1></li>
+</List>
+
+</Layout>
+
+
+<Notes>
+
 - We can take those same practices and apply them to developing accessible sites and apps.
 - And when we invest in testing and automating parts of our accessibility development, we build confidence in our systems that they will work for everyone, and consequently, make the web better for everyone.
 - So today, we're going to talk about...
 
 </Notes>
-
 
 ---
 
@@ -244,8 +258,6 @@ An open-source, automated tool for improving the quality of web pages.
 <Notes>
 
 - Allows you to run accessibility audits on your website.
-- You'll receive a score for how accessible your site is.
-- Based on how closely we adhere to accessibility standards and best practices.
 
 </Notes>
 
@@ -336,30 +348,6 @@ Open source tool that tests the accessibility of React applications and displays
 
 </Layout>
 
-
----
-
-<!-- react-axe import code  -->
-
-<CodeSurfer>
-
-```js file=./code/react-axe-import.js
-```
-
-```js 4:8 file=./code/react-axe-import.js
-```
-
-</CodeSurfer>
-
-<Notes>
-
-- Here's how you would use react-axe in your projects.
-- NEXT SLIDE
-- Note that I'm only running react-axe in NON-PRODUCTION environments.
-- It'll be clear why we do that when we see how it works.
-
-</Notes>
-
 ___
 
 <!-- react-axe walkthrough gif -->
@@ -373,9 +361,24 @@ ___
 - adding messages to our console highlighting accessibility errors on the page.
 - Includes a severity rating (minor, moderate, serious).
 - a link to a helpful resource for details on the error and how we can fix it.
-- Lighthouse is different, only statically checks our site.
-- react axe is working as we use it, evaluates the rerenders with every interaction.
-- That's why we only run in non-production environments, because the performance hit would be detrimental.
+- Lighthouse checks static page loads. react axe is working as we use it, evaluates the rerenders with every interaction.
+
+</Notes>
+
+---
+
+<Layout>
+
+# [`axe-core`](https://github.com/dequelabs/axe-core)
+Accessibility engine for automated Web UI testing
+
+</Layout>
+
+<Notes>
+
+- Last one for today
+- has a really powerful API for running automated accessibility tests and processes.
+- both lighthouse and react-axe are built with the axe-core api.
 
 </Notes>
 
@@ -457,10 +460,7 @@ ___
 
 <Notes>
 
-- Testing framework that's usually paired with React
-- framework, library, environemnt agnostic
-- library full of helpful testing methods for querying and matching values.
-- part of a larger testing suite with many other libraries for different technologies.
+- Usually use these, but you can use whatever works for you.
 
 </Notes>
 
@@ -481,45 +481,8 @@ ___
 <Notes>
 
 - Let's start off with a simple, accessible button.
-- And let's test that our button will render the right ARIA attribute when it's passed as a prop.
-
-</Notes>
-
----
-
-<Layout>
-
-# [ARIA Attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
-HTML attributes that help define the semantics of an element or component for assistive technologies.
-
-<small><a href="https://youtu.be/lxxYParyAGk?t=24456">📣 Watch my talk on building accessible components</a></small>
-
-</Layout>
-
-<Notes>
-
-- ARIA attributes provide more information to assistive technologies like a screen reader so they understand our components.
-- We want to make sure that we're including them where appropriate, making them perfect to test for.
-- Go to my talk on accessible components to learn more about ARIA and how to use. 
-
-</Notes>
-
----
-
-<!-- button component highlighting aria-label -->
-
-<CodeSurfer>
-
-```js 13,14 file=./code/unit-test-0.0.0.js
-```
-
-</CodeSurfer>
-
-<Notes>
-
-- The ARIA attribute we want to test for here is called 'aria-label'
-- it provides a label for the element it's applied to so that something like a screen reader can announce to users.
-
+- NEXT: passing accessibleLabel and conditionally rendering.
+- aria-label provides a label for the element it's applied to so that something like a screen reader can announce to users.
 
 </Notes>
 

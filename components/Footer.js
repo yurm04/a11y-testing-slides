@@ -4,8 +4,8 @@ import { Styled } from 'theme-ui'
 const Footer = () => (
   <footer className="footer">
     <Styled.a 
-      href="https://tldr-a11y.yuraima.com">
-        tldr-a11y.yuraima.com
+      href="https://a11y-testing.yuraima.com">
+        a11y-testing.yuraima.com
     </Styled.a>
     <Styled.a 
       href="https://www.twitter.com/yurm04">
