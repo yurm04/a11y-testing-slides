@@ -5,28 +5,31 @@ import {
   Step,
 } from "code-surfer";
 import './styles.css'
+import { vsDark, github, dracula } from "@code-surfer/themes";
 import customTheme from './theme'
 export const theme = customTheme;
+
+import { layouts, themes } from './constants'
 
 import Layout from './components/Layout'
 import List from './components/List'
 import FullImage from './components/FullImage'
-import lighthouseAudit1 from './images/lighthouse-audits-start-useReact.png'
-import lighthouseAudit2 from './images/lighthouse-a11y-results-useReact.png'
-import lighthouseAudit3 from './images/lighthouse-a11y-results-expanded-useReact.png'
-import lighthouseAudit4 from './images/lighthouse-results-all-useReact.png'
-import reactAxeDemo from './images/react-axe-demo.gif'
-import failedFocusTest from './images/failed-focus-test.png'
-import onBlurError from './images/on-blur-error-useReact.gif'
-import cypressA11yFail from './images/cypress-a11y-fail.png'
-import altTextUseReact from './images/alt-text-useReact.png'
+import lighthouseAudit1 from './assets/lighthouse-audits-start-useReact.png'
+import lighthouseAudit2 from './assets/lighthouse-a11y-results-useReact.png'
+import lighthouseAudit3 from './assets/lighthouse-a11y-results-expanded-useReact.png'
+import lighthouseAudit4 from './assets/lighthouse-results-all-useReact.png'
+import reactAxeDemo from './assets/react-axe-demo.gif'
+import failedFocusTest from './assets/failed-focus-test.png'
+import onBlurError from './assets/on-blur-error-useReact.gif'
+import cypressA11yFail from './assets/cypress-a11y-fail.png'
+import altTextUseReact from './assets/alt-text-useReact.png'
 
 
 <Head>
   <title>How to do Good, Without Doing Anything</title>
 </Head>
 
-<Layout>
+<Layout showWebsite={true} theme="light" layout={layouts.bigHello}>
 
 # Hello 👋
 
@@ -42,14 +45,10 @@ import altTextUseReact from './images/alt-text-useReact.png'
 
 ---
 
-<Layout>
+<Layout showWebsite={true} layout="introLayout">
 
 # Yuraima Estevez
-
-<List>
-  <li>👩‍💻 Tech Lead</li>
-  <li>📰 The New York Times</li>
-</List>
+## Engineering Manager @ The New York Times
 
 </Layout>
 
@@ -96,7 +95,11 @@ import altTextUseReact from './images/alt-text-useReact.png'
 
 ---
 
+<Layout layout={layouts.sectionTitle}>
+
 # How to do Good, Without doing Anything
+
+</Layout>
 
 ---
 
@@ -192,15 +195,14 @@ An open-source, automated tool for improving the quality of web pages.
 
 # [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
-</Layout>
-
-
 <List bullets appear={false}>
   <li>Chrome DevTools</li>
   <li>Command Line</li>
   <li>CI Systems</li>
   <li>Web UI</li>
 </List>
+
+</Layout>
 
 <Notes>
 
@@ -399,7 +401,7 @@ ___
 
 <!-- button component code -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/unit-test-0.0.0.js
 ```
@@ -421,7 +423,7 @@ ___
 
 <!-- step through button test for aria-label  -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/unit-test-0.0.1.js
 ```
@@ -454,7 +456,7 @@ ___
 
 <!-- button test that the aria label is there -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/unit-test-0.0.2.js
 ```
@@ -477,7 +479,7 @@ ___
 
 <!-- button test for focus on the button -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/unit-test-0.0.3.js
 ```
@@ -505,7 +507,7 @@ ___
 
 <!-- accessible button with div subbed in -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/unit-test-0.0.0.js
 ```
@@ -583,7 +585,7 @@ How individual components interact with each other
 
 <!-- Slack component code intro -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/integration-test-0.0.0.js
 ```
@@ -609,7 +611,7 @@ How individual components interact with each other
 
 <!-- Accessible alert component walkthrough -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/integration-test-0.0.1.js
 ```
@@ -635,7 +637,7 @@ How individual components interact with each other
 
 <!-- Accessible alert test walkthrough -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/integration-test-0.0.2.js
 ```
@@ -707,7 +709,7 @@ Evaluate your entire app and full user flows
 
 <!-- Accessible alert test walkthrough -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/e2e-test-0.0.0.js title="cypress-axe plugin"
 ```
@@ -738,7 +740,7 @@ Evaluate your entire app and full user flows
 
 <!-- Accessible alert test walkthrough -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/e2e-test-0.0.1.js
 ```
@@ -771,7 +773,7 @@ Evaluate your entire app and full user flows
 
 <!-- Accessible alert test walkthrough -->
 
-<CodeSurfer>
+<CodeSurfer theme={github}>
 
 ```js file=./code/e2e-test-0.0.2.js
 ```

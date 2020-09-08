@@ -1,8 +1,40 @@
+:root {
+  --dark-purple: #221D40;
+  --light-grey: #E5E5E5;
+  --light-purple: #FAF5FE;
+  --color-white: #fff;
+  --color-purple: #6D5ADF;
+  --color-black: #000;
+  --light-bg-color: var(--color-white);
+  --dark-bg-color: var(--dark-purple);
+  --dark-text-shadow: 0px 4px 4px #000000;
+  --light-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --dark-purple-text-shadow: 0px 4px 4px rgba(221, 215, 251, 0.4);
+  --font-montseratt: 'Montserrat', sans-serif;
+  --font-roboto: 'Roboto Mono', monospace;
+  --font-size-xlarge: 6.25rem; /* 100px */
+  --font-size-large: 4.375rem; /* 70px */
+  --font-size-normal: 2.5rem; /* 40px */
+}
+
+h1 {
+  margin-top: 0;
+}
+
 .layout {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+.layout .childContainer {
   width: 90%;
   margin-right: auto;
   margin-left: auto;
-  text-align: center;
 }
 
 /* .layout p,
@@ -13,8 +45,6 @@
 } */
 
 footer {
-  border-top: solid 2px;
-  border-color: --theme-ui-colors-secondary;
   position: fixed;
   bottom: .5em;
   left: 0;
@@ -24,6 +54,212 @@ footer {
   padding: .5em 1em 0;
 }
 
-footer a {
-  font-size: 1.5rem;
+.footer a {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #fff;
+  align-self: flex-end;
 }
+
+.footer .twitterContainer {
+  text-align: center;
+}
+
+.footer .twitterBird {
+  position: relative;
+  left: -90px;
+  bottom: -60px;
+  display: inline;
+}
+
+.footer .twitterHandle {
+  z-index: 1;
+  position: relative;
+  display: block;
+}
+
+.websiteLink.hideWebsite {
+  opacity: 0;
+}
+
+table td {
+  border: none
+}
+
+.layout .coolButton {
+  padding: 20px 50px;
+  font-family: "Roboto Mono", monospace;
+  font-size: var(--font-size-large);
+  color: #fff;
+  background-color: var(--color-purple);
+  border-radius: 20px;
+  letter-spacing: .3em;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  text-shadow: var(--light-text-shadow);
+}
+
+.layout .coolButton.shadowButton {
+  position: absolute;
+  left: 0;
+}
+
+p.accentText {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+table.table{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.table td {
+  border: none;
+}
+
+.layout.light {
+  background-color: var(--light-bg-color);
+  color: var(--dark-purple);
+}
+
+.layout.light p {
+  color: var(--dark-purple);
+}
+
+.layout.light .footer a {
+  color: var(--dark-purple);
+  text-shadow: var(--dark-purple-text-shadow);
+}
+
+.layout.introLayout h1 {
+  font-size: var(--font-size-xlarge);
+  font-family: var(--font-montseratt);
+  margin-bottom: 2.1875rem;
+}
+
+.layout.introLayout h2 {
+  font-size: var(--font-size-normal);
+  font-family: var(--font-roboto);
+  margin: 0;
+}
+
+
+/* dark layout theme */
+
+.layout.dark {
+  color: var(--color-white);
+}
+
+/* layout introLayout */
+
+.layout.dark.introLayout h1 {
+  color: #FFFFFF;
+  text-shadow: var(--dark-text-shadow);
+}
+
+.layout.dark.introLayout h2 {
+  color: #DFE2FD;
+  text-shadow: var(--dark-text-shadow);
+}
+
+.layout.leftAligned {
+  text-align: left;
+}
+
+/* layout sectionBodyLayout */
+
+.layout.sectionBodyLayout h1 {
+  font-size: var(--font-size-normal);
+  font-weight: bold;
+  font-family: var(--font-roboto);
+  color: var(--color-white);
+  text-transform: lowercase;
+  margin-bottom: 6.25rem;
+}
+
+.layout.sectionBodyLayout p {
+  font-family: var(--font-montseratt);
+  font-size: var(--font-size-large);
+  color: var(--light-purple);
+  text-shadow: 0px 4px 4px rgba(34, 29, 64, 0.5);
+}
+
+/* layout block quote */
+
+.layout.blockQuote blockquote{
+  font-size: var(--font-size-large);
+  margin-bottom: 4.375rem;
+  font-weight: normal;
+}
+
+.layout.blockQuote blockquote + p {
+  font-family: var(--font-roboto);
+  font-size: var(--font-size-normal);
+  text-shadow: var(--light-text-shadow);
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.layout.blockQuote.light blockquote p {
+  color: var(--color-black);
+}
+
+.layout.blockQuote.light blockquote + p{
+  color: var(--dark-purple);
+  text-shadow: var(--light-text-shadow);
+}
+
+.layout.light.bigHello h1{
+  color: var(--dark-purple);
+  text-shadow: var(--dark-purple-text-shadow);
+  font-family: var(--font-roboto);
+  font-size: 12.5rem;
+}
+
+/* layout section title */
+
+.layout.sectionTitle h1 {
+  font-size: var(--font-size-large);
+  line-height: 1.17;
+  font-weight: bold;
+  text-shadow: var(--light-text-shadow);
+}
+
+.layout.sectionTitle.dark h1 {
+  color: var(--color-white);
+}
+
+.layout.sectionTitle.light h1 {
+  color: var(--color-black);
+}
+
+/* layout section title body */
+
+.layout.sectionTitle h1 {
+  font-size: var(--font-size-xlarge);
+  font-family: var(--font-roboto);
+  line-height: 1.17;
+}
+
+.layout.sectionTitleBody h1 {
+  color: var(--color-purple);
+  text-shadow: var(--light-text-shadow);
+  font-size: var(--font-size-normal);
+  font-family: var(--font-roboto);
+  margin-bottom: 2.1875rem;
+}
+
+.layout.sectionTitleBody h1 + p {
+  font-family: var(--font-montseratt);
+  font-size: var(--font-size-large);
+  margin-top: 0;
+  line-height: 1.21;
+}
+
