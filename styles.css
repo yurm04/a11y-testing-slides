@@ -128,7 +128,8 @@ table.table td {
   color: var(--dark-purple);
 }
 
-.layout.light p {
+.layout.light p,
+.layout.light li {
   color: var(--dark-purple);
 }
 
