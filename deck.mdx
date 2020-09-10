@@ -42,8 +42,7 @@ import altTextUseReact from './assets/alt-text-useReact.png'
 
 <Notes>
 
-- hope everyones cozying up at home, washing their hands and social distancing.
-- I myself will be dialing into this conference from my couch in cozy sweat pants with an offensively large cup of tea.
+- some intro!
 
 </Notes>
 
@@ -55,6 +54,90 @@ import altTextUseReact from './assets/alt-text-useReact.png'
 ## Engineering Manager @ The New York Times
 
 </Layout>
+
+<Notes>
+
+- website to see the slides
+- hit me up on twitter
+
+</Notes>
+
+---
+
+<Layout layout={layouts.sectionTitle} theme={themes.light}>
+
+# Accessibility
+
+</Layout>
+
+<Notes>
+
+- a11y is all about our users, all of our users, every one of them
+- making sure everyone has the opportunity to participate on the web, in our mobile apps, and more generally in society.
+- ensures this regardless of a person's circumstance, ability or disability.
+
+</Notes>
+
+---
+
+<Layout layout={layouts.blockQuote} theme={themes.light}>
+
+>"The power of the Web is in its universality.  Access by everyone regardless of disability is an essential aspect."
+
+Tim Berners-Lee, W3C Director and inventor of the World Wide Web
+
+</Layout>
+
+<Notes>
+
+- Web a11y is about keeping the web inclusive
+- about making sure we don't gate keep certain populations of people
+- which does happen if we aren't intentional about building our apps so that they work for everyone.
+
+</Notes>
+
+---
+
+<Layout layout={layouts.blockQuote} theme={themes.light}>
+
+>"The power of the Web is in its universality.  Access by everyone regardless of disability is an essential aspect."
+
+Tim Berners-Lee, W3C Director and inventor of the World Wide Web
+
+</Layout>
+
+<Notes>
+
+- Not enough to just stop worrying about accessibility after the build phase
+- there's so much more work that goes into our apps after we've pushed it out into production.
+- there's maintanence, bug fixes, and feature development
+- everytime we make a change in the codebase we open ourselves up to bugs, regressions.
+
+</Notes>
+
+---
+
+<Layout>
+
+<List>
+  <li><h1>Testing</h1></li>
+  <li><h1>Automation</h1></li>
+</List>
+
+</Layout>
+
+<!-- a11y is all about our users, all of our users and making sure everyone has the opportunity to participate on the web, in our mobile apps, and more generally in society. -->
+
+<Notes>
+
+- but this is a solved problem.
+- we've already found ways to protect ourselves from unintentionally creating bugs or degrading user experiences...
+- NEXT
+- through testing
+- and we've managed to cut down time in running these tests and other processes... NEXT... through automation.
+
+
+</Notes>
 
 ---
 
@@ -68,10 +151,11 @@ import altTextUseReact from './assets/alt-text-useReact.png'
 
 </Layout>
 
-
 <Notes>
 
-- As engineers we've already embraced the practice of protecting ourselves from bugs by writing tests and cutting time in our development process through continuous integrations and development.
+- if we build out our components and apps as accessibily as possible... NEXT
+- ...write tests against them to validate their behavior to guard against bugs... NEXT
+- ... AND find opportunities to automate some of the processes in our accessibility development cycle...
 
 </Notes>
 
@@ -91,8 +175,8 @@ import altTextUseReact from './assets/alt-text-useReact.png'
 
 <Notes>
 
-- We can take those same practices and apply them to developing accessible sites and apps.
-- And when we invest in testing and automating parts of our accessibility development, we save time and build confidence in our systems that they will work for everyone, and consequently, make the web better for everyone.
+- We save time and build confidence in our systems that they will work for everyone, and consequently, make the web better for everyone.
+- can sleep soundly knowing we've built and kept our applications inclusive with little effort in the long run.
 - So today, we're going to talk about...
 
 </Notes>
@@ -104,6 +188,13 @@ import altTextUseReact from './assets/alt-text-useReact.png'
 # How to do Good, Without doing Anything
 
 </Layout>
+
+<Notes>
+
+- so, in a way, we'd be doing a lot of Good
+- without doing anything at all.
+
+</Notes>
 
 ---
 
@@ -127,20 +218,38 @@ import altTextUseReact from './assets/alt-text-useReact.png'
 
 ---
 
-<Layout>
+<Layout layout={[layouts.sectionTitleBody, layouts.leftAligned]} theme={themes.dark}>
 
-<List appear={false}>
-  <li><h1>Tools</h1></li>
-  <li><h1>Testing</h1></li>
-</List>
+# ⚠️ Disclaimer
+
+You need to have a good foundation for accessibilty and testing.
 
 </Layout>
 
 
 <Notes>
 
-- disclaimer: i primarily work in javascript specifically react on the FE. Lots of my examples will be in react.  But almost everything in this talk is agnostic of language, framework, library. 
-- the impolementation details will be specific to your code bases, but you can use the types of tools and strategies in this talk to help guide those decisions on how to make a path forward for yourself.
+- I assume you have a good enough grasp of accessibility and testing concepts to understand best practices,common lingo, and syntax.
+- If you need a primer on accessibilty, I have a few recorded talks i've done linked in this slide.
+
+
+</Notes>
+
+---
+
+<Layout layout={[layouts.sectionTitleBody, layouts.leftAligned]} theme={themes.dark}>
+
+# ⚠️ Disclaimer
+
+Most examples are in React.
+
+</Layout>
+
+
+<Notes>
+
+- disclaimer: i primarily work in React on the FE. Lots of my examples will be in react.  But almost everything in this talk is can be translated to the language, framework, library. 
+- the implementation details will be specific to your code bases, but you can use the types of tools and strategies in this talk to help guide those decisions on how to make a path forward for yourself.
 
 </Notes>
 
@@ -173,13 +282,15 @@ Set of accessibility linter rules that checks JSX elements during development
 - low lift, most people already have linters
 - Helps you catch common accessibility mistakes in your code while your developing
 - Automate it using git hooks to prevent inaccessible code from getting committed
-- Can use it in your CI/CD pipeline to fail builds that don’t pass and prevent accessibility issues from making it into production
+- Can use it in your CI/CD pipeline to fail builds if errors are thrown, prevent accessibility issues from making it into production
 
 </Notes>
 
+<!-- TODO: Add a picture of eslint fail rule -->
+
 ---
 
-<Layout layout={layouts.sectionTitleBody}>
+<Layout layout={layouts.sectionTitleBody} theme={themes.light}>
 
 # [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 An open-source, automated tool for improving the quality of web pages.
@@ -189,13 +300,15 @@ An open-source, automated tool for improving the quality of web pages.
 
 <Notes>
 
-- Allows you to run accessibility audits on your website.
+- Allows you to run accessibility audits on your website. 
+- Gives you a better understanding of how accessible your website is.
+- Helps to unearth any issues you need to resolve.
 
 </Notes>
 
 ---
 
-<Layout layout={layouts.sectionTitleBody}>
+<Layout layout={layouts.sectionTitleBody} theme={themes.light}>
 
 # [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
@@ -219,13 +332,13 @@ An open-source, automated tool for improving the quality of web pages.
 
 <!-- shows the lighthouse accessibility audit for useReact.nyc website -->
 
-<Image src={lighthouseAudit1} />
+<FullImage src={lighthouseAudit1} />
 
 <Notes>
 
 - for now let's look at lighthouse in chrome devtools.
 - If you open the "Audits" tab you'll see a list of audits that you can run and some different options we can set.
-- using the useReactNYC website for demonstrations.
+
 
 </Notes>
 
@@ -233,7 +346,7 @@ ___
 
 <!-- shows the lighthouse accessibility audit results for useReact.nyc website -->
 
-<Image src={lighthouseAudit2} />
+<FullImage src={lighthouseAudit2} />
 
 <Notes>
 
@@ -246,7 +359,7 @@ ___
 
 <!-- shows all lighthouse audit results for useReact.nyc website -->
 
-<Image src={lighthouseAudit3} />
+<FullImage src={lighthouseAudit3} />
 
 <Notes>
 
@@ -260,7 +373,7 @@ ___
 
 <!-- shows expanded results for useReact.nyc website -->
 
-<Image src={lighthouseAudit4} />
+<FullImage src={lighthouseAudit4} />
 
 <Notes>
 
@@ -292,7 +405,7 @@ ___
 - adding messages to our console highlighting accessibility errors on the page.
 - Includes a severity rating (minor, moderate, serious).
 - a link to a helpful resource for details on the error and how we can fix it.
-- Lighthouse checks static page loads. react axe is working as we use it, evaluates the rerenders with every interaction.
+- difference between Lighthouse and react-axe: lighthouse checks static page loads. react axe is working as we use it, evaluates the rerenders with every interaction.
 
 </Notes>
 
@@ -310,6 +423,30 @@ Accessibility engine for automated Web UI testing
 - Last one for today
 - has a really powerful API for running automated accessibility tests and processes.
 - both lighthouse and react-axe are built with the axe-core api.
+- allows you full control over the workflows, processes, or tests you want to run.
+
+</Notes>
+
+---
+
+<Layout layout={[layouts.sectionTitleBody, layouts.leftAligned]} theme={themes.light}>
+
+# Tools
+
+<List appear={false}>
+  <li>eslint-plugin-jsx-a11y</li>
+  <li>Lighthouse</li>
+  <li>react-axe</li>
+  <li>axe-core</li>
+</List>
+
+</Layout>
+
+<Notes>
+
+- That wraps it up for my recommendations on automated Tools
+- this is by no means an exhaustive list of the tools available for your javascript apps
+- but it's a good start to get you thinking about your accessibility development processes and where you can automate some tasks.
 
 </Notes>
 
@@ -420,7 +557,37 @@ ___
 
 - Let's start off with a simple, accessible button.
 - NEXT: passing accessibleLabel and conditionally rendering.
-- aria-label provides a label for the element it's applied to so that something like a screen reader can announce to users.
+- aria-label provides a descriptive label for the element it's applied to so that something like a screen reader can announce to users.
+
+</Notes>
+
+---
+
+<!-- button test that the aria label is there -->
+
+<CodeSurfer theme={github}>
+
+```js file=./code/unit-test-0.0.2.js
+```
+
+```js 1 file=./code/unit-test-0.0.2.js
+```
+
+```js 3:10 file=./code/unit-test-0.0.2.js
+```
+
+```js 5,12 file=./code/unit-test-0.0.2.js
+```
+
+</CodeSurfer>
+
+<Notes>
+
+- NEXT start by checking that aria-label attribute is rendered when we pass accessible label prop to it.
+- NEXT... create button component, pass accessibile label value to it, render my component
+- NEXT... asserting that our button does have the aria-label attribute
+- and it's set to the label that we passed to our component.
+
 
 </Notes>
 
@@ -436,10 +603,7 @@ ___
 ```js 1 file=./code/unit-test-0.0.1.js
 ```
 
-```js 2:6 file=./code/unit-test-0.0.1.js
-```
-
-```js 7:8 file=./code/unit-test-0.0.1.js
+```js 2:8 file=./code/unit-test-0.0.1.js
 ```
 
 ```js 10 file=./code/unit-test-0.0.1.js
@@ -449,34 +613,12 @@ ___
 
 <Notes>
 
-- Let's step through
-- NEXT: testing that we only render the aria-label when we have the right prop.
+- Also want to test that we only render the aria-label when we have the right prop.
+- if accessibleLabel is empty and we render an empty aria-label attribute, assistive technologies may not announce the button to our users, and our users won't know what this button does.
 - NEXT: construct our accessible button component and make sure not to pass the accessibleLabel prop
-- NEXT: render that button and query for the button node
+- render that button and query for the button node
 - NEXT: what we care about. asserting that our rendered button does NOT have an aria-label attribute
-
-</Notes>
-
----
-
-<!-- button test that the aria label is there -->
-
-<CodeSurfer theme={github}>
-
-```js file=./code/unit-test-0.0.2.js
-```
-
-```js 5,12 file=./code/unit-test-0.0.2.js
-```
-
-</CodeSurfer>
-
-<Notes>
-
-- Also test that the label attribute is there when we do pass the prop to it.
-- NEXT: most is the same, but passing the accessibleLabel attribute.
-- and asserting that our button does have the aria-label attribute
-- and it's set to the label that we passed to our component.
+- not too difficult, fairly straightforward.
 
 </Notes>
 
@@ -664,11 +806,12 @@ How individual components interact with each other
 <Notes>
 
 - Let's look at a simple test SlackSignupContainer.
-- NEXT: test that my alert is updated when the input is blurred.
+- NEXT: test that my alert is updated when the input is blurred an no valid email address.
 - NEXT: render my signup container component and get references to input and alert components.
-- NEXT: focus into my input and assert that my alert contains no text in it.
+- NEXT: focus into my input and assert that my alert contains no text in it, should be empty when first rendered.
 - NEXT: blur out without a valid email, assert that my alert component does receive our error message.
-- Lots of moving parts, but guiding principles the same: check that components still manage ARIA correctly, keyboard nav.
+- Lots of moving parts, but guiding principles the same: in this case checking that behaves accessibly through different states.
+- can also check that components still manage ARIA correctly, keyboard nav.
 
 </Notes>
 
