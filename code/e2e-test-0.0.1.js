@@ -1,19 +1,10 @@
-describe("Accessibility tests", () => {
-  // ...
+it('SlackContainer submits email address using keyboard', () => {
+  cy.get('.accessible-input')
+    .type('yuraima@useReact.nyc') // type email address
+    .tab() // tab to the submit button
+    .type('{enter}') // press the enter key to submit
   
-  it('Has alternative text set for all organizer images', () => {
-    cy.get('ul.organizers-ul img')
-      .should(($img) => {
-        // should have 5 img elements
-        expect($img).to.have.length(5)
-
-        // get alt text values for each element
-        const altValues = $img.map((i, el) => {
-          return Cypress.$(el).attr('alt')
-        })
-
-        // there should be 5 alt text values
-        expect(altValues).to.have.lengthOf(5)
-      })
-  })
+  // check accessible alert for submit success message
+  cy.get('.accessible-alert')
+    .should('have.text', 'Email successfully submitted!')
 })

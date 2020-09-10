@@ -177,7 +177,7 @@ Tim Berners-Lee, W3C Director and inventor of the World Wide Web
 
 - We save time and build confidence in our systems that they will work for everyone, and consequently, make the web better for everyone.
 - can sleep soundly knowing we've built and kept our applications inclusive with little effort in the long run.
-- So today, we're going to talk about...
+
 
 </Notes>
 
@@ -185,14 +185,33 @@ Tim Berners-Lee, W3C Director and inventor of the World Wide Web
 
 <Layout layout={layouts.sectionTitle}>
 
-# How to do Good, Without doing Anything
+<h1>How to do Good, Without doing Anything<span style={{visibility: 'hidden'}}>*</span></h1>
+
+<p style={{visibility: 'hidden'}}>(sort of)</p>
+
 
 </Layout>
 
 <Notes>
 
-- so, in a way, we'd be doing a lot of Good
-- without doing anything at all.
+- and in a way, you'll be able to say you're doing a lot of good
+- without doing anything
+
+</Notes>
+
+---
+
+<Layout layout={layouts.sectionTitle}>
+
+<h1>How to do Good, Without doing Anything<span>*</span></h1>
+
+<p>*sort of</p>
+
+</Layout>
+
+<Notes>
+
+- sort of...
 
 </Notes>
 
@@ -222,7 +241,7 @@ Tim Berners-Lee, W3C Director and inventor of the World Wide Web
 
 # ⚠️ Disclaimer
 
-You need to have a good foundation for accessibilty and testing.
+You need to have a good [foundation](https://www.youtube.com/watch?v=2iijtPDtV0s) for accessibilty and testing.
 
 </Layout>
 
@@ -456,7 +475,7 @@ Accessibility engine for automated Web UI testing
 
 # Testing
 
-<List appear={true}>
+<List appear={false}>
   <li>Unit Tests</li>
   <li>Integration Tests</li>
   <li>End-to-end Tests</li>
@@ -874,23 +893,20 @@ Evaluate your entire app and full user flows
 
 ---
 
-<FullImage src={altTextUseReact} />
-
-<Notes>
-
-- Let's see how we can write our own e2e with a short and easy one.
-- on the useReact website we have a section with all of the organizer photos.
-- for screen reader support, all of these images need to have an alt attribute set.
-
-</Notes>
-
----
-
 <!-- Accessible alert test walkthrough -->
 
 <CodeSurfer theme={github}>
 
 ```js file=./code/e2e-test-0.0.1.js
+```
+
+```js 1 file=./code/e2e-test-0.0.1.js
+```
+
+```js 2 file=./code/e2e-test-0.0.1.js
+```
+
+```js 3 file=./code/e2e-test-0.0.1.js
 ```
 
 ```js 4 file=./code/e2e-test-0.0.1.js
@@ -899,50 +915,75 @@ Evaluate your entire app and full user flows
 ```js 5 file=./code/e2e-test-0.0.1.js
 ```
 
-```js 10:13 file=./code/e2e-test-0.0.1.js
-```
-
-```js 15:16 file=./code/e2e-test-0.0.1.js
+```js 7:9 file=./code/e2e-test-0.0.1.js
 ```
 
 </CodeSurfer>
 
 <Notes>
 
-- NEXT: let's check that when my page renders in the browser, organizers all have alt text
-- NEXT: cypress query for our organizer images
-- NEXT: then get the alt attribute values for all of our images.
-- NEXT: and assert that this should have a length of 5, equal to the number of organizers we have.
-- For the sake of time this is an overly simplified test. But what's important here is getting to the root of how a user would flow through our websie, and translating that into tests..
+- Using cypress let's write a simple e2e test for our same slack sign up form
+- we want to know that our slack sign up component works using only a keyboard... NEXT
+- query for our accessible input ...NEXT...and type in an email address 
+- NEXT...tab to our submit submit button NEXT and hit enter NEXT
+- Finally we check that our accessible alert is updated with the success message.
+
 
 </Notes>
 
 ---
 
-<!-- Accessible alert test walkthrough -->
+<!-- hypothetical test walkthroughs -->
 
 <CodeSurfer theme={github}>
 
-```js file=./code/e2e-test-0.0.2.js
+```js 8:17 file=./code/e2e-test-0.0.2.js
 ```
 
 ```js 4:6 file=./code/e2e-test-0.0.2.js
 ```
 
-```js 24:26 file=./code/e2e-test-0.0.2.js
+```js 19:21 file=./code/e2e-test-0.0.2.js
 ```
 
 </CodeSurfer>
 
 <Notes>
 
-- Ask yourselves...
-- NEXT: what should happen when I successfully submit my slack sign up form? what are the aria attr. and where does focus go?
+- Simple and small, but tests the entire user flow of our slack sign up form using just a keyboard.
+- that's what we want to check in our tests: how is a user interacting with my app, how can i translate that into tests and validate that it works? do it through an accessibility lense
+- NEXT: could also test that our user is alerted of errors like in our integration test
 - NEXT: Or what if a user navigates to a different page?  What do we expect the outcome is when we click a link in SPA, and what are the implications for accessibility support?
+- For e2e tests, think about your users, think about the flow of your app, and how you want to validate.
 
 </Notes>
 
 ---
+
+<Layout layout={layouts.sectionTitle} theme={themes.light}>
+
+# Testing
+
+<List appear={false}>
+  <li>Unit Tests</li>
+  <li>Integration Tests</li>
+  <li>End-to-end Tests</li>
+</List>
+
+</Layout>
+
+
+<Notes>
+
+- That's it for Testing.
+- we covered the three types of tests.
+- Unit tests for component apis and behaviors.
+- Integration tests for components that interact or depend on other components
+- and e2e tests for validating entire using flows.
+
+</Notes>
+
+___
 
 <Layout>
 
@@ -955,10 +996,10 @@ Evaluate your entire app and full user flows
 
 <Notes>
 
-- And that brings me to the end of the basics so lets recap
+- Put it all together...
 - NEXT: tools, help prevent accessibility bugs from being introduced in writing code, commiting to code base, shipping to production.
 - Generating audits and uncovering where we can improve our accessibility support.
-- NEXT: In testing we covered unit, integration, e2e.  When to use each, what to test for each category.  And touched on the importance of manually testing and validating our accessibility support.
+- NEXT: In testing we covered unit, integration, e2e.  When to use each, what to test for each category.
 
 </Notes>
 
@@ -978,7 +1019,7 @@ Evaluate your entire app and full user flows
 
 - It was quite a bit to cover in the amount of time that we have, and there's still plenty to uncover that will help you create an accessibility development workflow that will benefit your projects and teams.
 - But if there's one piece of advice i want to leave you with its this:
-- It can feel really overwhelming if this is the first time you've thought about the accessibility of your products, and are taking stock of the work that needs to happen to bring it up to standards.
+- It can feel really overwhelming if this is the first time you've thought about the accessibility of your products, and are taking stock of the work that needs to happen to bring it up to standards and create reliable processes around them.
 - But it's not expected that you to have a fully accessible site or 100% test coverage on day one.
 
 </Notes>
@@ -1000,6 +1041,41 @@ Evaluate your entire app and full user flows
 - make incremental changes where you can, and consistently chisel away at the accessiblity errors.
 - eventually, implementing those small changes add up to possessing a deeper understanding of what it'll take to make your site accessible, and how to make it resilient against bugs.
 - Once we have that understanding, and have our automation and testing processes in place, it'll be easier to make our websites work for everyone, and that means it'll be easier to build a better web for everyone.
+
+</Notes>
+
+---
+
+<Layout layout={layouts.sectionTitle}>
+
+<h1>How to do Good, Without doing Anything<span style={{visibility: 'hidden'}}>*</span></h1>
+
+<p style={{visibility: 'hidden'}}>(sort of)</p>
+
+
+</Layout>
+
+<Notes>
+
+- eventually, you'll be able to say you're doing a lot of good
+- without doing anything
+
+</Notes>
+
+---
+
+<Layout layout={layouts.sectionTitle}>
+
+<h1>How to do Good, Without doing Anything<span>*</span></h1>
+
+<p>*sort of</p>
+
+</Layout>
+
+<Notes>
+
+- eventually, you'll be able to say you're doing a lot of good
+- without doing anything
 
 </Notes>
 
